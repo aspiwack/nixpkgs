@@ -8,12 +8,12 @@ let
 in stdenv.mkDerivation rec {
   version = "7.11.20151216";
   name = "ghc-${version}";
-  rev = "28638dfe79e915f33d75a1b22c5adce9e2b62b97";
+  rev = "faaf31398110610a0f7068ca13d798d1ac21e02e";
 
   src = fetchgit {
     url = "git://git.haskell.org/ghc.git";
     inherit rev;
-    sha256 = "0rjzkzn0hz1vdnjikcbwfs5ggs8r3y4gqxfdn4jzfp45gx94wiwv";
+    sha256 = "18zdv1p7nhqwlwdv30qwcwaaxh89hk7d5gx5190asf83hnxc3xxl";
   };
 
   patches = [
@@ -42,7 +42,7 @@ in stdenv.mkDerivation rec {
   '';
 
   configureFlags = [
-    "--with-gcc=${stdenv.cc}/bin/cc"
+    "CC=${stdenv.cc}/bin/cc"
     "--with-gmp-includes=${gmp.dev}/include" "--with-gmp-libraries=${gmp.out}/lib"
     "--with-curses-includes=${ncurses.dev}/include" "--with-curses-libraries=${ncurses.out}/lib"
   ] ++ stdenv.lib.optional stdenv.isDarwin [
