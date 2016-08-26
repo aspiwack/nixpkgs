@@ -16,10 +16,6 @@ in stdenv.mkDerivation rec {
     sha256 = "18zdv1p7nhqwlwdv30qwcwaaxh89hk7d5gx5190asf83hnxc3xxl";
   };
 
-  patches = [
-    ./ghc-7.x-dont-pass-linker-flags-via-response-files.patch   # https://github.com/NixOS/nixpkgs/issues/10752
-  ];
-
   postUnpack = ''
     pushd ghc-${builtins.substring 0 7 rev}
     echo ${version} >VERSION
